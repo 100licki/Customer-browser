@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Edit Customer</h1>
+            <div class="row">
+                <div class="col-lg-3">
+                    <a th:href="@{/customers}" class="btn btn-primary btn-sm mb-3">Return</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/customers/{id} (id=${customer.id})}" th:object="${customer}" method="POST">
+                    <div class="form-group">
+                        <label>First Name*</label>
+                        <input type="text" name="firstName" th:field="*{firstName}" class="form-control"
+                               placeholder="First Name" required pattern="[a-zA-Z][a-zA-Z0-9-_]{2,24}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name*</label>
+                        <input type="text" name="lastName" th:field="*{lastName}" class="form-control"
+                               placeholder="Last Name" required pattern="[a-zA-Z][a-zA-Z0-9-_]{2,24}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email*</label>
+                        <input type="email" name="email" th:field="*{email}" class="form-control"
+                               placeholder="Email" required pattern="(\w\.?)+@[\w\.-]+\.\w{2,4}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" name="phoneNumber" th:field="*{phoneNumber}" class="form-control"
+                               placeholder="Phone Number"/>
+                    </div>
+
+                    <div>
+                        <label>Country*</label>
+                        <input type="text" name="address.country" th:field="*{address.country}" class="form-control"
+                               placeholder="Country" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Zip</label>
+                        <input type="text" name="address.zip" th:field="*{address.zip}" class="form-control"
+                               placeholder="Zip"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" name="address.city" th:field="*{address.city}" class="form-control"
+                               placeholder="City"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input type="text" name="address.street" th:field="*{address.street}" class="form-control"
+                               placeholder="Street"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Information</label>
+                        <input type="text" name="additionalInformation" th:field="*{additionalInformation}"
+                               class="form-control"
+                               placeholder="Additional Information"/>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
